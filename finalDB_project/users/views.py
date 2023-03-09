@@ -13,9 +13,9 @@ def register(request):
             new_user.email = request.POST.get('email') 
             new_user.save()
             form.save()
-            #username = form.cleaned_data.get('username')
-            #messages.success(request, f'Account created for {username}!')
-            return redirect('animemaster-home')
+            #display_username = form.cleaned_data.get('username')
+            messages.success(request, f'Your account has been created! You are now able to log in, fellow weeb!:)')
+            return redirect('login')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
