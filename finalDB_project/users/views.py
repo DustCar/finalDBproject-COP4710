@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm
 from .models import User
+
 
 def register(request):
     if request.method == 'POST':
@@ -19,3 +21,7 @@ def register(request):
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
+
+@login_required # decorator: adds functionality to an existing function (user must be logged for this page)
+def profile(request):
+    return render(request, 'users/profile.html')
