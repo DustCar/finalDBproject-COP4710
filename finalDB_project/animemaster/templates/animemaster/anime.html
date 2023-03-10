@@ -1,0 +1,20 @@
+{% extends "animemaster/index.html" %} <!-- extending the base template -->   
+{% block content %}
+    <div>
+        <h2>Anime</h2>
+        <ul>
+    {% for anime in anime_list %}
+        <li>
+            {{anime.name}}
+            {{anime.genre}}
+            {{anime.type}}
+            {{anime.episodes}}
+            <button class="btn btn-outline-info add-to-btn" type="submit">+</button>
+        </li>
+    
+    {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}
+    
+

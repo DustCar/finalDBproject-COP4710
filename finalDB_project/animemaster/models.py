@@ -10,3 +10,14 @@ class Post(models.Model):
     
     def __str__(self):
         return self.title
+    
+class Media(models.Model):
+    name = models.CharField(max_length=200, blank=True)
+    genre = models.CharField(max_length=255, blank=True)
+    
+    class Meta:
+        abstract = True
+
+class mediaAnime(Media):
+    type = models.CharField(max_length=15, blank=True)
+    episodes = models.CharField(max_length=10)

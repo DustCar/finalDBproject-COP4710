@@ -4,4 +4,5 @@ from . import views
 urlpatterns = [
     path('', views.home, name='animemaster-home'),
     path('about/', views.about, name='animemaster-about'), #animemaster urls will handle anything in animemaster
+    path('anime/', views.anime, name='animemaster-anime'),
 ]
