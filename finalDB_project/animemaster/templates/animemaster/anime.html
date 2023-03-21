@@ -9,7 +9,7 @@
             {{anime.genre}}
             {{anime.type}}
             {{anime.episodes}}
-            <button class="btn btn-outline-info add-to-btn" type="submit">+</button>
+            <a href="{% url 'addToList' anime.id %}"><button value="{{ anime.id }}">Add to List</button></a>
         </li>
     
     {% endfor %}

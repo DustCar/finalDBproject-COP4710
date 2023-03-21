@@ -8,3 +8,14 @@ class User(models.Model):
     
 #class Profile(models.Model):
     #user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+class List(models.Model):
+    user = models.CharField(max_length=100, default="Anonymous")
+    name = models.CharField(max_length=200, blank=True)
+    genre = models.CharField(max_length=255, blank=True)
+    lid = models.AutoField(primary_key=True)
+    aid = models.PositiveIntegerField(default=0)
+    typeL = models.CharField(max_length=200, blank=True)
+    episodesL = models.CharField(max_length=10, blank=True)
+    timeadded = models.TimeField(blank=True, null=True)
+    dateadded = models.DateField(blank=True, null=True)
