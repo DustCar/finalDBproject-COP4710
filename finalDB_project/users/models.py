@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from animemaster.models import mediaAnime
 
 class User(models.Model):
     username = models.CharField(max_length=30)
@@ -11,11 +11,8 @@ class User(models.Model):
 
 class List(models.Model):
     user = models.CharField(max_length=100, default="Anonymous")
-    name = models.CharField(max_length=200, blank=True)
-    genre = models.CharField(max_length=255, blank=True)
     lid = models.AutoField(primary_key=True)
-    aid = models.PositiveIntegerField(default=0)
-    typeL = models.CharField(max_length=200, blank=True)
-    episodesL = models.CharField(max_length=10, blank=True)
     timeadded = models.TimeField(blank=True, null=True)
     dateadded = models.DateField(blank=True, null=True)
+    media = models.ForeignKey(mediaAnime, on_delete=models.CASCADE, default=-1)
+

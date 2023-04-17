@@ -2,18 +2,16 @@
 {% block content %}
     <div>
         <h2>Anime</h2>
-        <ul>
     {% for anime in anime_list %}
-        <li>
-            {{anime.name}}
-            {{anime.genre}}
-            {{anime.type}}
-            {{anime.episodes}}
-            <a href="{% url 'addToList' anime.id %}"><button value="{{ anime.id }}">Add to List</button></a>
-        </li>
-    
+    <p>
+        {{anime.name}}
+        {{anime.genre}}
+        {{anime.type}}
+        {{anime.episodes}}
+        <a href="{% url 'addToList' anime.id %}"><button class="buttonA" value="{{ anime.id }}">Add to List</button></a>
+        <br>
+    </p>
     {% endfor %}
-        </ul>
     </div>
 {% endblock content %}
     
