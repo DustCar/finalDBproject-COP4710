@@ -1,25 +1,27 @@
 {% extends "animemaster/index.html" %}
 {% block content %}
-<div>
-    <h2>My Anime List</h2>
-    <ul>
-{% for anime in anime_list %}
-    <li>
-        {{anime.name}}
-        {{anime.genre}}
-        {{anime.type}}
-        {{anime.episodes}}
-        <a href="{% url 'unlist_media' anime.id %}">(remove)</a>
-    </li>
+    <div>
+        <h2>My Anime List</h2>
+        <hr width="100%"/>
+    {% for anime in anime_list %}
+    <p>
+        <i>{{anime.media.name}}</i>
+        | {{anime.media.genre}} |
+        {{anime.media.type}} |
+        {{anime.media.episodes}}
+    </p>
+    <p class="time-text">
+        {{anime.dateadded}}
+        {{anime.timeadded}}
+    </p>
+    <hr width="100%"/>
+    {% empty %}
 
-{% empty %}
+        <h3>{{ user.username }}, looks like your list is empty... (T.T)</h3>
+        <br>
+        <a href="{% url 'animemaster-anime' %}" class="btn btn-secondary">Go to Anime Catalog</a>
 
-    <h3>{{ user.username }}, looks like your list is empty... (T.T)</h3>
-    <br>
-    <a href="{% url 'animemaster/anime.html' %}" class="btn btn-secondary">Go to Anime Catalog</a>
-
-{% endfor %}
-    </ul>
-</div>
+    {% endfor %}
+    </div>
 
 {% endblock content %}

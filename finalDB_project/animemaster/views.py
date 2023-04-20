@@ -37,6 +37,6 @@ def addToList(request, pk):
 
 def mylist(request):
 
-    listdb = List.objects.filter(user=request.user.username)
-    return render(request, 'animemaster/mylist', {'anime_list' : listdb})
+    listdb = List.objects.select_related().filter(user=request.user.username)
+    return render(request, 'animemaster/mylist.html', {'anime_list' : listdb})
     
