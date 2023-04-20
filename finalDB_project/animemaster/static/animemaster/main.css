@@ -85,7 +85,7 @@ a.article-title:hover {
 
 .buttonA {
   background-color: #428bca;
-  padding: 3px 8px;
+  padding: 3px 6px;
   font-size: 13px;
   border-radius: 3px;
   transition-duration: 3ms;
@@ -98,7 +98,16 @@ a.article-title:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 12px 50px 0 rgba(0,0,0,0.19);
 }
 
+.buttonB {
+  background-color: red;
+  padding: 1px 5px;
+  font-size: 10px;
+  border-radius: 3px;
+  transition-duration: 3ms;
+  color: white;
+  border: none;
+}
+
 .time-text {
-  text-align: right;
   font-size: 10px;
 }

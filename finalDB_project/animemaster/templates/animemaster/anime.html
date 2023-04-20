@@ -1,14 +1,20 @@
 {% extends "animemaster/index.html" %} <!-- extending the base template -->   
 {% block content %}
     <div>
-        <h2>Anime</h2>
+        <h2 style="display: inline;">Anime</h2>
+        {% if user.is_superuser %}
+        <button class="buttonA">Add</button>
+        {% endif %}
         <hr width="100%">
     {% for anime in anime_list %}
     <p>
-        {{anime.name}}
-        {{anime.genre}}
-        {{anime.type}}
-        {{anime.episodes}}
+        {% if user.is_superuser %}
+        <button class="buttonB">x</button>
+        {% endif %}
+        <i>{{anime.name}}</i> |
+        {{anime.genre}} |
+        {{anime.type}} |
+        Episodes: {{anime.episodes}}
         <a href="{% url 'addToList' anime.id %}"><button class="buttonA" value="{{ anime.id }}">Add to List</button></a>
         <br>
         <hr width="100%">

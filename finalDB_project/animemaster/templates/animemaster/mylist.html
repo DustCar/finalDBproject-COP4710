@@ -1,18 +1,19 @@
 {% extends "animemaster/index.html" %}
 {% block content %}
     <div>
-        <h2>My Anime List</h2>
+        <h2>{{ user.username }}'s Anime List</h2>
         <hr width="100%"/>
     {% for anime in anime_list %}
     <p>
-        <i>{{anime.media.name}}</i>
-        | {{anime.media.genre}} |
-        {{anime.media.type}} |
-        {{anime.media.episodes}}
+        <i>{{ anime.media.name }}</i>
+        | {{ anime.media.genre }} |
+        {{ anime.media.type }} |
+        Episodes: {{ anime.media.episodes }}
+        <a href="{% url 'unlist-media' anime.lid %}"><button class="buttonA" value="{{ anime.lid }}">Remove</button></a>
     </p>
     <p class="time-text">
-        {{anime.dateadded}}
-        {{anime.timeadded}}
+        {{ anime.dateadded }}
+        {{ anime.timeadded }}
     </p>
     <hr width="100%"/>
     {% empty %}

@@ -7,4 +7,6 @@ urlpatterns = [
     path('anime/', views.anime, name='animemaster-anime'),
     path('add/<int:pk>', views.addToList, name='addToList'),
     path('mylist/', views.mylist, name='animemaster-mylist'),
+    path('unlist/<int:pk>', views.unlist, name='unlist-media'),
+
 ]
