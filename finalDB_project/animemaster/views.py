@@ -16,6 +16,7 @@ def anime(request):
     
     return render(request, 'animemaster/anime.html', {'anime_list': anime_list})
 
+# user functions
 @login_required
 def addToList(request, pk):
     
@@ -44,3 +45,11 @@ def unlist(request, pk):
     list.delete()
     messages.success(request, f'Anime removed successfully!')
     return redirect('animemaster-mylist')
+
+# admin functions
+def remove(request, pk):
+    anime = mediaAnime.objects.get(id=pk)
+    anime.delete()
+    messages.success(request, f'{anime.name} removed')
+    return redirect('animemaster-anime')
+    

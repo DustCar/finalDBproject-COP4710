@@ -9,7 +9,7 @@
     {% for anime in anime_list %}
     <p>
         {% if user.is_superuser %}
-        <button class="buttonB">x</button>
+        <a href="{% url 'remove-media' anime.id %}"><button class="buttonB">x</button></a>
         {% endif %}
         <i>{{anime.name}}</i> |
         {{anime.genre}} |
