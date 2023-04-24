@@ -16,6 +16,11 @@ def anime(request):
     
     return render(request, 'animemaster/anime.html', {'anime_list': anime_list})
 
+def details(request, pk):
+    anime = mediaAnime.objects.get(id=pk)
+
+    return render(request, 'animemaster/details.html', {'curr_anime': anime})
+
 # user functions
 @login_required
 def addToList(request, pk):

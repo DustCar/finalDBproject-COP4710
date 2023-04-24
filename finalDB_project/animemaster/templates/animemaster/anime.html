@@ -11,7 +11,7 @@
         {% if user.is_superuser %}
         <a href="{% url 'remove-media' anime.id %}"><button class="buttonB">x</button></a>
         {% endif %}
-        <i>{{anime.name}}</i> |
+        <a href="{% url 'details-media' anime.id %}"><i>{{anime.name}}</i></a> |
         {{anime.genre}} |
         {{anime.type}} |
         Episodes: {{anime.episodes}}
