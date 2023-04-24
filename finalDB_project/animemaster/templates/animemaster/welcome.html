@@ -1,0 +1,17 @@
+{% extends "animemaster/index.html" %} <!-- extending the base template -->
+{% load static %}
+{% block content %}
+    <div class="welcome-header">
+        <h1>ANIME MASTER</h1>
+        <p>Anime/Manga platform</p>
+    </div>
+    <div class="welcome-section" style="background-image: url('{% static "animemaster/photos/animephoto3.png" %}');">
+        <div class="welcome-text">
+            <h2>Welcome Fellow Weebs!</h2>
+            
+            <p>Login in if you have an account, or sign up to become a fellow weeb today!</p> 
+            <button id="welcome-btn" onclick="window.location.href={% url 'login' %}" class="btn btn-default">Sign In</button>
+            <button id="welcome-btn" onclick="window.location.href={% url 'register' %}" class="btn btn-default">Sign Up</button>
+        </div>
+    </div> 
+{% endblock content %}

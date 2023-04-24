@@ -1,19 +1,22 @@
 body {
-  background: #fafafa;
-  color: #333333;
+  background: linear-gradient(to right, #26324a, #263238, #2e3233, #2e3233, #263238, #26324a);
+  color: black;
   margin-top: 5rem;
-}
-  
-h1, h2, h3, h4, h5, h6 {
-  color: #444444;
 }
   
 ul {
   margin: 0;
 }
+
+footer {
+  font-size: 10px;
+  text-align: center;
+  color: lightslategray;
+  margin-bottom: 35px;
+}
   
 .bg-steel {
-  background-color: #5f788a;
+  background-color: #3d4344;
 }
   
 .site-header .navbar-nav .nav-link {
@@ -83,6 +86,66 @@ a.article-title:hover {
   font-size: 2.5rem;
 }
 
+.welcome-header {
+  font-family: Impact, fantasy;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 3px;
+}
+
+.welcome-header h1 {
+  font-size: 70px;
+}
+
+.welcome-section {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+  border-radius: 20px 20px 20px 20px;
+  padding: 130px;
+  margin-bottom: 100px;
+}
+
+.welcome-text {
+  padding: 100px;
+  opacity: 0.9;
+  background-color: lightgray;
+  text-align: center;
+}
+
+div.welcome-text:hover {
+  background-color: grey;
+}
+
+.welcome-text h2, .welcome-text p {
+  font-family: Impact, fantasy;
+  text-align: center;
+  font-weight: bold;
+  color: black;
+  letter-spacing: 3px;
+}
+
+.welcome-text h2 {
+  font-size: 50px;
+  margin-bottom: 250px;
+}
+
+#welcome-btn {
+  text-align: center;
+  border: solid black;
+}
+
+#welcome-btn:hover {
+  background-color: white;
+}
+
+#am-row {
+  background-color: #e3e3e3;
+  border-radius: 15px 15px 15px 15px;
+  padding: 50px;
+}
+
 .buttonA {
   background-color: #428bca;
   padding: 3px 6px;
@@ -110,4 +173,55 @@ a.article-title:hover {
 
 .time-text {
   font-size: 10px;
+}
+
+.anime-list-bg {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 100px;
+  border-radius: 10px 10px 10px 10px;
+  border-style: solid;
+  border-color: black;
+  padding: 25px;
+  opacity: 0.97;
+  color: black;
+}
+
+.anime-header h2 {
+  font-size: 70px;
+  font-family: Impact, fantasy;
+  letter-spacing: 3px;
+}
+
+.anime-header p {
+  font-size: 15px;
+  font-family: 'Tahoma', sans-serif;
+  letter-spacing: 2px;
+  margin-bottom: 50px;
+}
+
+.anime-list p {
+  font-family: 'Tahoma', sans-serif;
+}
+
+.mylist-bg {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 100px;
+  border-radius: 10px 10px 10px 10px;
+  border-style: solid;
+  border-color: black;
+  padding: 25px;
+  opacity: 0.97;
+  color: black;
+}
+
+.mylist-header h2 {
+  font-size: 70px;
+  font-family: Impact, fantasy;
+  letter-spacing: 2px;
+}
+
+.mylist {
+  font-family: 'Tahoma', sans-serif;
 }

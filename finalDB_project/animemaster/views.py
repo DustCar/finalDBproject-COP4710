@@ -5,6 +5,9 @@ from django.contrib import messages
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 
+def welcome(request):
+    return render(request, 'animemaster/welcome.html')
+
 def home(request):
     return render(request, 'animemaster/home.html') # pass it as our third argument (pass the data into the template)
 

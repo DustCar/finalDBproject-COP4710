@@ -1,28 +1,44 @@
 {% extends "animemaster/index.html" %}
+{% load static %}
 {% block content %}
-    <div>
-        <h2>{{ user.username }}'s Anime List</h2>
-        <hr width="100%"/>
+    <style>
+        body {
+            background-image: url('{% static "animemaster/photos/animephoto2.jpeg" %}');
+        }
+
+        footer {
+            background-color: white; 
+            padding: 25px;
+            margin-bottom: 0px;
+            opacity: 0.9;
+            color: black;
+        }
+    </style>
+    <div class="mylist-bg">
+        <div class="mylist-header"> 
+            <h2>{{ user.username }}'s Anime List</h2>
+            <hr width="100%"/>
+        </div>
     {% for anime in anime_list %}
-    <p>
-        <i>{{ anime.media.name }}</i>
-        | {{ anime.media.genre }} |
-        {{ anime.media.type }} |
-        Episodes: {{ anime.media.episodes }}
-        <a href="{% url 'unlist-media' anime.lid %}"><button class="buttonA" value="{{ anime.lid }}">Remove</button></a>
-    </p>
-    <p class="time-text">
-        {{ anime.dateadded }}
-        {{ anime.timeadded }}
-    </p>
-    <hr width="100%"/>
-    {% empty %}
-
-        <h3>{{ user.username }}, looks like your list is empty... (T.T)</h3>
-        <br>
-        <a href="{% url 'animemaster-anime' %}" class="btn btn-secondary">Go to Anime Catalog</a>
-
+        <div class="mylist"> 
+            <p>
+                <i>{{anime.media.name}}</i>
+                | {{anime.media.genre}} |
+                {{anime.media.type}} |
+                Episodes: {{anime.media.episodes}}
+                <a href="{% url 'unlist-media' anime.lid %}"><button class="buttonA" value="{{ anime.lid }}">Remove</button></a>
+            </p>
+            <p class="time-text">
+                {{anime.dateadded}}
+                {{anime.timeadded}}
+            </p>
+            <hr width="100%"/>
+            {% empty %}
+        
+                <h3>{{ user.username }}, looks like your list is empty... (T.T)</h3>
+                <br>
+                <a href="{% url 'animemaster-anime' %}" class="btn btn-secondary">Go to Anime Catalog</a>
+        </div>
     {% endfor %}
     </div>
-
 {% endblock content %}

@@ -1,26 +1,44 @@
-{% extends "animemaster/index.html" %} <!-- extending the base template -->   
+{% extends "animemaster/index.html" %} <!-- extending the base template --> 
+{% load static %}  
+
 {% block content %}
-    <div>
-        <h2 style="display: inline;">Anime</h2>
+    <style>
+        body {
+        background-image: url('{% static "animemaster/photos/animephoto4.png" %}');
+        }
+    
+        footer {
+        background-color: white; 
+        padding: 25px;
+        margin-bottom: 0px;
+        opacity: 0.9;
+        color: black;
+        }
+    </style>
+    <div class="anime-list-bg">
         {% if user.is_superuser %}
         <button class="buttonA">Add</button>
         {% endif %}
-        <hr width="100%">
+        <div class="anime-header">
+            <h2>Anime</h2>
+            <p>Add what anime you want onto your list!</p>
+            <hr width="100%">
+        </div>
     {% for anime in anime_list %}
-    <p>
-        {% if user.is_superuser %}
-        <a href="{% url 'remove-media' anime.id %}"><button class="buttonB">x</button></a>
-        {% endif %}
-        <a href="{% url 'details-media' anime.id %}"><i>{{anime.name}}</i></a> |
-        {{anime.genre}} |
-        {{anime.type}} |
-        Episodes: {{anime.episodes}}
-        <a href="{% url 'addToList' anime.id %}"><button class="buttonA" value="{{ anime.id }}">Add to List</button></a>
-        <br>
-        <hr width="100%">
-    </p>
+        <div class="anime-list"> 
+            <p>
+                {% if user.is_superuser %}
+                <a href="{% url 'remove-media' anime.id %}"><button class="buttonB">x</button></a>
+                {% endif %}
+                <a href="{% url 'details-media' anime.id %}"><i>{{anime.name}}</i></a> |
+                {{anime.genre}} |
+                {{anime.type}} |
+                Episodes: {{anime.episodes}}
+                <a href="{% url 'add-media' anime.id %}"><button class="buttonA" value="{{ anime.id }}">Add to List</button></a>
+                <br>
+                <hr width="100%">
+            </p>
+        </div>
     {% endfor %}
     </div>
 {% endblock content %}
-    
-
