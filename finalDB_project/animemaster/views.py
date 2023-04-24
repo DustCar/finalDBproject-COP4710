@@ -38,7 +38,7 @@ def addToList(request, pk):
         messages.success(request, f'Anime added!')
     else:
         messages.error(request, f'Anime is already added!')
-    return redirect('animemaster-anime')
+    return redirect('animemaster-mylist')
 
 @login_required
 def mylist(request):
