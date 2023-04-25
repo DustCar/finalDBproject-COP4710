@@ -1,11 +1,12 @@
 {% extends "animemaster/index.html" %}   
+{% load  %}
 {% block content %}
     {% if user.is_superuser %}
-    <button>Edit</button>
+    <a href="{% url 'update-media' curr_anime.id %}"><button>Edit</button></a>
     {% endif %}
     <h1>{{ curr_anime.name }}</h1>
     <p>
         Details: {{ curr_anime.genre }}, {{ curr_anime.synopsis }}
     </p>
-
+    <img src="{{curr_anime.media_img.url}}">
 {% endblock content %}

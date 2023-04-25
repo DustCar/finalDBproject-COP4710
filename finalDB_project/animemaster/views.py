@@ -4,6 +4,7 @@ from users.models import List
 from django.contrib import messages
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
+from .forms import AnimeForm
 
 def welcome(request):
     return render(request, 'animemaster/welcome.html')
@@ -60,4 +61,31 @@ def remove(request, pk):
     anime.delete()
     messages.success(request, f'{anime.name} removed')
     return redirect('animemaster-anime')
+
+def update(request, pk):
+    anime = mediaAnime.objects.get(id=pk)
+    if request.method == 'POST':
+        form = AnimeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    else:
+        form = AnimeForm()
+    return render(request, 'animemaster/update.html', {'curr_anime' : anime, 'form' : form})
+
+def updateanime(request, pk):
+    updated = mediaAnime.objects.get(id=pk)
+    if request.POST['name']:
+        updated.name = request.POST['name']
+    if request.POST['genre']:
+        updated.genre = request.POST['genre']
+    if request.FILES['media_img']:
+        updated.media_img = request.FILES['media_img']
+    if request.POST['synopsis']:
+        updated.synopsis = request.POST['synopsis']
+    if request.POST['type']:
+        updated.type = request.POST['type']
+    if request.POST['episodes']:
+        updated.episodes = request.POST['episodes']
+    updated.save()
+    return redirect('details-media', pk)
     

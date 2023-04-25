@@ -5,5 +5,5 @@ class AnimeForm(forms.ModelForm):
 
     class Meta:
         model = mediaAnime
-        fields = ['name', 'genres', 'media_img', 'synopsis', 'type', 'episodes']
+        fields = ['name', 'genre', 'media_img', 'synopsis', 'type', 'episodes']
 
