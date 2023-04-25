@@ -1,0 +1,20 @@
+{% extends "animemaster/index.html" %}
+{% block content %}
+    <h1>Update {{ curr_anime.name }}</h1>
+
+    <form action="updateanime/{{ curr_anime.id }}" method="post">
+    {% csrf_token %}
+    Anime name (current): {{ curr_anime.name }} 
+    New name: {{ form.name }}
+    <br><br>
+    Image: {{ form.media_img }}
+
+    <br><br>
+    Genre:
+    <input name="genre_a" value="{{ curr_anime.genre }}">
+    <br><br>
+
+    </form>
+
+
+{% endblock %}

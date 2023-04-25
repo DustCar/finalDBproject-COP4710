@@ -1,5 +1,8 @@
 {% extends "animemaster/index.html" %}   
 {% block content %}
+    {% if user.is_superuser %}
+    <button>Edit</button>
+    {% endif %}
     <h1>{{ curr_anime.name }}</h1>
     <p>
         Details: {{ curr_anime.genre }}, {{ curr_anime.synopsis }}
