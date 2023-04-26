@@ -231,7 +231,7 @@ div.welcome-text:hover {
   border-style: solid;
   border-color: black;
   padding: 25px;
-  opacity: 0.97;
+  opacity: 0.98;
   color: black;
 }
 
@@ -243,4 +243,8 @@ div.welcome-text:hover {
 
 .mylist {
   font-family: 'Tahoma', sans-serif;
+}
+
+#user-status {
+  display: inline;
 }

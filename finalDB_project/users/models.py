@@ -15,4 +15,5 @@ class List(models.Model):
     timeadded = models.TimeField(blank=True, null=True)
     dateadded = models.DateField(blank=True, null=True)
     media = models.ForeignKey(mediaAnime, on_delete=models.CASCADE, default=-1)
+    user_status = models.CharField(max_length=50,null=True, default="Not Set")
 

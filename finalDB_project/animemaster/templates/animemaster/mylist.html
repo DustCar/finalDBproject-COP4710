@@ -19,12 +19,23 @@
         </div>
     {% for anime in anime_list %}
         <div class="mylist"> 
-            <p>
+            <p style="display: inline;">
                 <a href="{% url 'details-media' anime.media_id %}"><i>{{anime.media.name}}</i></a>
                 | {{anime.media.genre}} |
                 {{anime.media.type}} |
-                Episodes: {{anime.media.episodes}}
-                <a href="{% url 'unlist-media' anime.lid %}"><button class="buttonA" value="{{ anime.lid }}">Remove</button></a>
+                Episodes: {{anime.media.episodes}} |
+                {% if anime.user_status == 'Currently Watching' %}
+                   <div id="user-status" style="color: yellow;"> {{ anime.user_status }} </div>
+                {% elif anime.user_status == 'Plan to Watch' %}
+                   <div id="user-status" style="color: orange;"> {{ anime.user_status }} </div>
+                {% elif anime.user_status == 'Already Watched' %}
+                   <div id="user-status" style="color: green;"> {{ anime.user_status }} </div>
+                {% else %}
+                    {{ anime.user_status }}
+                {% endif %}
+                <a href="{% url 'unlist-media' anime.lid %}"><button class="buttonA" value="{{ anime.lid }}" style="float:right">Remove</button></a> 
+                <a href="{% url 'update-mylist' anime.lid %}" style="font-size: small;">Update</a>
+                
             </p>
             <p class="time-text">
                 {{anime.dateadded}}
