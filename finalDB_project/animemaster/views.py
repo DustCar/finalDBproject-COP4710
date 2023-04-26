@@ -1,11 +1,9 @@
 from django.shortcuts import render, redirect
-
 from .models import mediaAnime
-from users.models import List
 from django.contrib import messages
-from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from .forms import AnimeForm
+from .filters import listFilter
 
 def welcome(request):
     return render(request, 'animemaster/welcome.html')
@@ -15,15 +13,13 @@ def home(request):
 
 def anime(request):
     anime_list = mediaAnime.objects.all()
-    
-    return render(request, 'animemaster/anime.html', {'anime_list': anime_list})
+    l_filter = listFilter(request.GET, queryset=anime_list)
+    return render(request, 'animemaster/anime.html', {'anime_list': l_filter})
 
 def details(request, pk):
     anime = mediaAnime.objects.get(id=pk)
 
     return render(request, 'animemaster/details.html', {'curr_anime': anime})
-
-# user functions
 
 
 # admin functions

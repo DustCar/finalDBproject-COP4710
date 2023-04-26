@@ -20,9 +20,18 @@
         <div class="anime-header">
             <h2>Anime</h2>
             <p>Add what anime you want onto your list!</p>
+            <button type="button" class="collapsible">Filter</button>
+            <div class="content-filter">
+                <form method="GET">
+                    {{ anime_list.form.as_p }}
+                    <button type="submit">Filter</button>
+                </form>
+                <br>
+                <a href="{% url 'animemaster-anime' %}"><button>Reset</button></a>
+            </div>
             <hr width="100%">
         </div>
-    {% for anime in anime_list %}
+    {% for anime in anime_list.qs %}
         <div class="anime-list"> 
             <p>
                 {% if user.is_superuser %}
@@ -37,6 +46,29 @@
                 <hr width="100%">
             </p>
         </div>
+        {% empty %}
+        No Results!
     {% endfor %}
     </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++)
+        {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling; 
+                if (content.style.display == "block")
+                {
+                    content.style.display = "none";
+                }
+                else 
+                {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
 {% endblock content %}
