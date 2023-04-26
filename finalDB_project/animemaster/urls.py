@@ -12,4 +12,5 @@ urlpatterns = [
     path('remove/<int:pk>', views.remove, name='remove-media'),
     path('details/<int:pk>', views.details, name='details-media'),
     path('update/<int:pk>', views.update, name='update-media'),
+    path('anime/add/', views.addAnime, name='add-anime')
 ]

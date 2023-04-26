@@ -2,7 +2,7 @@
 {% load  %}
 {% block content %}
     {% if user.is_superuser %}
-    <a href="{% url 'update-media' curr_anime.id %}"><button>Edit</button></a>
+    <a href="{% url 'update-media' curr_anime.id %}"><button class="buttonA">Edit</button></a>
     {% endif %}
     <h1>{{ curr_anime.name }}</h1>
     <p>

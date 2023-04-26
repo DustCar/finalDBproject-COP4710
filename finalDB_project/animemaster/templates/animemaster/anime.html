@@ -8,16 +8,14 @@
         }
     
         footer {
-            position: relative;
             background-color: white; 
-            padding: 20px 0px 3px;
-            margin-bottom: 0px;
+            padding: 20px 0px 10px;
             color: black;
         }
     </style>
     <div class="anime-list-bg">
         {% if user.is_superuser %}
-        <button class="buttonA">Add</button>
+            <a href="{% url 'add-anime' %}"><button class="buttonA">Add</button></a>
         {% endif %}
         <div class="anime-header">
             <h2>Anime</h2>

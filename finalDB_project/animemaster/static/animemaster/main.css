@@ -17,6 +17,20 @@ footer {
   color: lightslategray;
 }
   
+main {
+  flex-grow: 1;
+}
+
+.pagewrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 88.8vh;
+}
+
+.container-fluid {
+  padding: 50px;
+}
+
 .bg-steel {
   background-color: #3d4344;
 }
