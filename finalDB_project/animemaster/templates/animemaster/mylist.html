@@ -20,7 +20,7 @@
     {% for anime in anime_list %}
         <div class="mylist"> 
             <p>
-                <i>{{anime.media.name}}</i>
+                <a href="{% url 'details-media' anime.media_id %}"><i>{{anime.media.name}}</i></a>
                 | {{anime.media.genre}} |
                 {{anime.media.type}} |
                 Episodes: {{anime.media.episodes}}

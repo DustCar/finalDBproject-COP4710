@@ -46,7 +46,7 @@ def addToList(request, pk):
 
 @login_required
 def mylist(request):
-    listdb = List.objects.select_related().filter(user=request.user.username)
+    listdb = List.objects.select_related().filter(user=request.user.username).order_by('-dateadded','-timeadded')
     return render(request, 'animemaster/mylist.html', {'anime_list' : listdb})
 
 def unlist(request, pk):
