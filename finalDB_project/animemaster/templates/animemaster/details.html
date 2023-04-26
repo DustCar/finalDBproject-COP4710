@@ -8,5 +8,9 @@
     <p>
         Details: {{ curr_anime.genre }}, {{ curr_anime.synopsis }}
     </p>
-    <img src="{{curr_anime.media_img.url}}">
+    {% if curr_anime.media_img %}
+        <img src="{{ curr_anime.media_img.url }}">
+    {% else %}
+        No Photo Uploaded
+    {% endif %}
 {% endblock content %}

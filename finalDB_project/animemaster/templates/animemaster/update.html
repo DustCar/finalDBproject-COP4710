@@ -2,34 +2,22 @@
 {% block content %}
     <h1>Update {{ curr_anime.name }}</h1>
 
-    <form action="updateanime/{{ curr_anime.id }}" method="post" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    Current name: {{ curr_anime.name }} 
-    <br>
-    New name: {{ form.name }}
+    Current name: {{ form.name }}
     <br><br>
-    Image: {{ form.media_img }}
+    Image: <br>{{ form.media_img }}
     <br><br>
-    Current genre(s): {{ curr_anime.genre }}
-    <br>
-    New genre(s): {{ form.genre }}
+    Current genre(s): {{ form.genre }}
     <br><br>
-    Current type: {{ curr_anime.type }}
-    <br>
-    New type: {{ form.type }}
+    Current type: {{ form.type }}
     <br><br>
-    Current Number of episodes: {{ curr_anime.episodes }}
-    <br>
-    New Number of episodes: {{ form.episodes }}
+    Current Number of episodes: {{ form.episodes }}
     <br><br>
-    Current synopsis: {{ curr_anime.synopsis }}
-    <br>
-    New synopsis: {{ form.synopsis }}
+    Current synopsis: {{ form.synopsis }}
     <br><br>
 
     <input type="submit" value="Save Changes">
-
     </form>
-
 
 {% endblock %}

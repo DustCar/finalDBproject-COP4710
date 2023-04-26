@@ -63,29 +63,10 @@ def remove(request, pk):
     return redirect('animemaster-anime')
 
 def update(request, pk):
-    anime = mediaAnime.objects.get(id=pk)
-    if request.method == 'POST':
-        form = AnimeForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-    else:
-        form = AnimeForm()
-    return render(request, 'animemaster/update.html', {'curr_anime' : anime, 'form' : form})
-
-def updateanime(request, pk):
-    updated = mediaAnime.objects.get(id=pk)
-    if request.POST['name']:
-        updated.name = request.POST['name']
-    if request.POST['genre']:
-        updated.genre = request.POST['genre']
-    if request.FILES['media_img']:
-        updated.media_img = request.FILES['media_img']
-    if request.POST['synopsis']:
-        updated.synopsis = request.POST['synopsis']
-    if request.POST['type']:
-        updated.type = request.POST['type']
-    if request.POST['episodes']:
-        updated.episodes = request.POST['episodes']
-    updated.save()
-    return redirect('details-media', pk)
+    init_anime = mediaAnime.objects.get(pk=pk)
     
+    form = AnimeForm(request.POST or None, request.FILES or None, instance=init_anime)
+    if form.is_valid():
+        form.save()
+        return redirect('details-media', pk)
+    return render(request, 'animemaster/update.html', {'form' : form})

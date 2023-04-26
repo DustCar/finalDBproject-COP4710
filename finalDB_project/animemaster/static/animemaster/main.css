@@ -148,6 +148,10 @@ div.welcome-text:hover {
   padding: 50px;
 }
 
+.synopsis-text {
+  size: 50px;
+}
+
 .buttonA {
   background-color: #428bca;
   padding: 3px 6px;
