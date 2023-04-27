@@ -5,7 +5,6 @@ from users.models import List
 
 class listFilter(django_filters.FilterSet):
     GENRE_CHOICES = [
-        ('', '--------'),
         ('Action', 'Action'),
         ('Adventure', 'Adventure'),
         ('Comedy', 'Comedy'),
@@ -36,8 +35,13 @@ class listFilter(django_filters.FilterSet):
         ('Movie','Movie'),
         ('OVA','OVA'),
     ]
+    STAT_CHOICES = [
+        ('Ongoing','Ongoing'),
+        ('Completed','Completed'),
+    ]
     genre = django_filters.MultipleChoiceFilter(lookup_expr="contains", conjoined=True, choices = GENRE_CHOICES)
     type = django_filters.MultipleChoiceFilter(choices = TYPE_CHOICES, conjoined=True)
+    status = django_filters.ChoiceFilter(choices=STAT_CHOICES)
 
     class Meta:
         model = mediaAnime

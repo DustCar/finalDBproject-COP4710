@@ -1,23 +1,27 @@
 {% extends "animemaster/index.html" %}
+{% load static %}
 {% block content %}
-    <h1>Update {{ curr_anime.name }}</h1>
+    <div class="update-bg">
+        <h1>Update {{ curr_anime }}</h1>
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        Current name: {{ form.name }}
-        <br><br>
-        Image: <br>{{ form.media_img }}
-        <br><br>
-        Current genre(s): {{ form.genre }}
-        <br><br>
-        Current type: {{ form.type }}
-        <br><br>
-        Current Number of episodes: {{ form.episodes }}
-        <br><br>
-        Current synopsis: {{ form.synopsis }}
-        <br><br>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            Current name: {{ form.name }}
+            <br><br>
+            Image: <br>{{ form.media_img }}
+            <br><br>
+            Current genre(s): {{ form.genre }}
+            <br><br>
+            Current type: {{ form.type }}
+            <br><br>
+            Current status: {{ form.status }}
+            <br><br>
+            Current Number of episodes: {{ form.episodes }}
+            <br><br>
+            Current synopsis: {{ form.synopsis }}
+            <br><br>
 
-        <input type="submit" value="Save Changes">
-    </form>
-
+            <input type="submit" value="Save Changes">
+        </form>
+    </div>
 {% endblock %}

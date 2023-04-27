@@ -7,6 +7,7 @@ class Media(models.Model):
     genre = models.CharField(max_length=255, blank=True)
     media_img = models.ImageField(null=True, upload_to="photos", blank=True)
     synopsis = models.TextField(null=True, blank=True)
+    status = models.CharField(max_length=100, null=True, blank=True, default="Not Set")
     
     class Meta:
         abstract = True

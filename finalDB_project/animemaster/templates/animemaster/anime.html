@@ -36,6 +36,7 @@
                         Name: {{ anime_list.form.name }} &ensp; 
                         Genre: {{ anime_list.form.genre }} &ensp; 
                         Type: {{ anime_list.form.type }} &ensp;
+                        Status: {{ anime_list.form.status }} &ensp;
                         <button type="submit" class="buttonC">Search</button>
                     </p>
                 </form>
@@ -52,7 +53,7 @@
                 <a href="{% url 'details-media' anime.id %}"><i>{{anime.name}}</i></a> |
                 {{anime.genre}} |
                 {{anime.type}} |
-                Episodes: {{anime.episodes}}
+                {{anime.status}}
                 <a href="{% url 'add-media' anime.id %}"><button class="buttonA" value="{{ anime.id }}">Add to List</button></a>
                 <br>
                 <hr width="100%">

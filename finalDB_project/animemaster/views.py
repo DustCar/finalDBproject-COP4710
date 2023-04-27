@@ -41,7 +41,7 @@ def update(request, pk):
     if form.is_valid():
         form.save()
         return redirect('details-media', pk)
-    return render(request, 'animemaster/update.html', {'form' : form})
+    return render(request, 'animemaster/update.html', {'form' : form, 'curr_anime' : init_anime.name})
 
 def addAnime(request):
     if request.method == 'POST':
@@ -54,6 +54,7 @@ def addAnime(request):
             new_anime.synopsis = form.cleaned_data.get('synopsis')
             new_anime.type = form.cleaned_data.get('type')
             new_anime.episodes = form.cleaned_data.get('episodes')
+            new_anime.status = form.cleaned_data.get('status')
             new_anime.save()
             return redirect('animemaster-anime')
     else:
