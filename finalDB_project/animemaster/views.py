@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import mediaAnime
+from users.models import List
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import AnimeForm
@@ -23,8 +24,9 @@ def anime(request):
 
 def details(request, pk):
     anime = mediaAnime.objects.get(id=pk)
+    user_list = List.objects.filter(user=request.user.username, media_id=pk).first()
 
-    return render(request, 'animemaster/details.html', {'curr_anime': anime})
+    return render(request, 'animemaster/details.html', {'curr_anime': anime, 'in_list': user_list})
 
 
 # admin functions

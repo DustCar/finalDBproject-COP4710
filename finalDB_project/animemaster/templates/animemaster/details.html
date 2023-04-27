@@ -29,6 +29,11 @@
             {% endif %}
             </div>
             <div class="col-md-9">
+                {% if in_list %}
+                <button class="buttonD disabled">Add to List</button></a>
+                {% else %}
+                <a href="{% url 'add-media' curr_anime.id %}"><button class="buttonA">Add to List</button></a>
+                {% endif %}
                 <h4>Details:</h4> 
                 <p>Genre(s): {{ curr_anime.genre }}</p>
                 <p>Type: {{ curr_anime.type }}</p>
