@@ -1,15 +1,44 @@
 {% extends "animemaster/index.html" %} 
+{% load static %}
 {% block content %}
-    {% if user.is_superuser %}
-    <a href="{% url 'update-media' curr_anime.id %}"><button class="buttonA">Edit</button></a>
-    {% endif %}
-    <h1>{{ curr_anime.name }}</h1>
-    <p>
-        Details: {{ curr_anime.genre }}, {{ curr_anime.synopsis }}
-    </p>
-    {% if curr_anime.media_img %}
-        <img src="{{ curr_anime.media_img.url }}">
-    {% else %}
-        No Photo Uploaded
-    {% endif %}
+    <style>
+        body {
+        background-image: url('{% static "animemaster/photos/animephoto3.png"%}');
+        }
+
+        footer {
+        background-color: white; 
+        padding: 25px;
+        margin-bottom: 0px;
+        opacity: 0.97;
+        color: black;
+        }
+    </style>
+    <div class="details-bg">
+        {% if user.is_superuser %}
+        <a href="{% url 'update-media' curr_anime.id %}"><button class="buttonA">Edit</button></a>
+        {% endif %}
+        <h1>{{ curr_anime.name }}</h1>
+        <hr width="100%">
+        <div id="details-row" class="row">
+            <div class="col-md-3">
+            {% if curr_anime.media_img %}
+                <img src="{{ curr_anime.media_img.url }}" width="255" height="325">
+            {% else %}
+                No Photo Uploaded
+            {% endif %}
+            </div>
+            <div class="col-md-9">
+                <h4>Details:</h4> 
+                <p>Genre(s): {{ curr_anime.genre }}</p>
+                <p>Type: {{ curr_anime.type }}</p>
+                <p>Episodes: {{ curr_anime.episodes }}</p>
+            </div>
+        </div>
+        <hr width="100%">
+        <div class="syn">
+            <h4>Synopsis</h4>
+            <p>{{ curr_anime.synopsis }}</p>
+        </div>
+    </div>
 {% endblock content %}

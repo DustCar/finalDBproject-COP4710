@@ -15,6 +15,8 @@
     <div class="mylist-bg">
         <div class="mylist-header"> 
             <h2>{{ user.username }}'s Anime List</h2>
+            You currently have {{ list_count }} animes saved in your list. Want more? 
+            <a href="{% url 'animemaster-anime' %}"><button class="buttonA" style="float: unset;">Let's Go</button></a>
             <hr width="100%"/>
         </div>
     {% for anime in anime_list %}

@@ -37,7 +37,8 @@ class listFilter(django_filters.FilterSet):
         ('OVA','OVA'),
     ]
     genre = django_filters.MultipleChoiceFilter(lookup_expr="contains", conjoined=True, choices = GENRE_CHOICES)
-    type = django_filters.ChoiceFilter(choices = TYPE_CHOICES)
+    type = django_filters.MultipleChoiceFilter(choices = TYPE_CHOICES, conjoined=True)
+
     class Meta:
         model = mediaAnime
         fields = ['name', 'genre', 'type']

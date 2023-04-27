@@ -14,7 +14,12 @@ def home(request):
 def anime(request):
     anime_list = mediaAnime.objects.all().order_by('-id')
     l_filter = listFilter(request.GET, queryset=anime_list)
-    return render(request, 'animemaster/anime.html', {'anime_list': l_filter})
+    filter_count = l_filter.qs.count()
+    if (anime_list.count()==filter_count):
+        equal = True
+    else:
+        equal = False
+    return render(request, 'animemaster/anime.html', {'anime_list': l_filter, 'filter_count': filter_count, 'l_equals': equal})
 
 def details(request, pk):
     anime = mediaAnime.objects.get(id=pk)

@@ -19,7 +19,15 @@
         {% endif %}
         <div class="anime-header">
             <h2>Anime</h2>
-            <p>Add what anime you want onto your list!</p>
+            <p>Add what anime you want onto your list! <br>
+            {% if l_equals %}
+            There are currently {{ filter_count }} available animes
+            {% elif filter_count == 0 %}
+            No results were found :(
+            {% else %}
+            {{ filter_count }} results have been found
+            {% endif %}
+            </p>
             <button type="button" class="collapsible">Filter</button>
             <div class="content-filter">
                 <form method="GET">
@@ -28,8 +36,7 @@
                         Name: {{ anime_list.form.name }} &ensp; 
                         Genre: {{ anime_list.form.genre }} &ensp; 
                         Type: {{ anime_list.form.type }} &ensp;
-                        AND: {{ anime_list.form.and_op }} &ensp;
-                        <button type="submit" class="buttonC">Filter</button>
+                        <button type="submit" class="buttonC">Search</button>
                     </p>
                 </form>
                 <a href="{% url 'animemaster-anime' %}"><button class="buttonC">Reset</button></a>
@@ -52,7 +59,7 @@
             </p>
         </div>
         {% empty %}
-        No Results!
+        Sorry, nothing to find here <a href="{% url 'animemaster-anime' %}"><button class="buttonC">Reset</button></a>
     {% endfor %}
     </div>
 
