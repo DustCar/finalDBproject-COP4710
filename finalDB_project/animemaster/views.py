@@ -12,7 +12,7 @@ def home(request):
     return render(request, 'animemaster/home.html') # pass it as our third argument (pass the data into the template)
 
 def anime(request):
-    anime_list = mediaAnime.objects.all()
+    anime_list = mediaAnime.objects.all().order_by('-id')
     l_filter = listFilter(request.GET, queryset=anime_list)
     return render(request, 'animemaster/anime.html', {'anime_list': l_filter})
 

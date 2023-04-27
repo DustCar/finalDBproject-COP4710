@@ -23,11 +23,16 @@
             <button type="button" class="collapsible">Filter</button>
             <div class="content-filter">
                 <form method="GET">
-                    {{ anime_list.form.as_p }}
-                    <button type="submit">Filter</button>
+                    <p>
+                        Filter By <br>
+                        Name: {{ anime_list.form.name }} &ensp; 
+                        Genre: {{ anime_list.form.genre }} &ensp; 
+                        Type: {{ anime_list.form.type }} &ensp;
+                        AND: {{ anime_list.form.and_op }} &ensp;
+                        <button type="submit" class="buttonC">Filter</button>
+                    </p>
                 </form>
-                <br>
-                <a href="{% url 'animemaster-anime' %}"><button>Reset</button></a>
+                <a href="{% url 'animemaster-anime' %}"><button class="buttonC">Reset</button></a>
             </div>
             <hr width="100%">
         </div>
