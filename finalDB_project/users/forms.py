@@ -13,6 +13,7 @@ class UserRegisterForm(UserCreationForm):
 
 class userStatus(forms.ModelForm):
     STAT_CHOICES = [
+        ('Not Set','Not Set'),
         ('Plan to Watch', 'Plan to Watch'),
         ('Currently Watching', 'Currently Watching'),
         ('Already Watched', 'Already Watched'),

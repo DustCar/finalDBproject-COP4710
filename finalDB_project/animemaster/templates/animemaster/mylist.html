@@ -15,11 +15,28 @@
     <div class="mylist-bg">
         <div class="mylist-header"> 
             <h2>{{ user.username }}'s Anime List</h2>
-            You currently have {{ list_count }} animes saved in your list. Want more? 
+            {% if list_count == anime_list.qs.count %}
+            You currently have {{ anime_list.qs.count }} animes saved in your list. Want more? 
             <a href="{% url 'animemaster-anime' %}"><button class="buttonA" style="float: unset;">Let's Go</button></a>
-            <hr width="100%"/>
+            {% else %}
+            You have {{ anime_list.qs.count }} anime(s) set as: 
+                {% if stat.user_status == 'Currently Watching' %}
+                <div id="user-status" style="color: yellow;"> {{ stat.user_status }} </div>
+                {% elif stat.user_status == 'Plan to Watch' %}
+                <div id="user-status" style="color: orange;"> {{ stat.user_status }} </div>
+                {% elif stat.user_status == 'Already Watched' %}
+                <div id="user-status" style="color: green;"> {{ stat.user_status }} </div>
+                {% else %}
+                <div id="user-status" style="color: red;"> {{ stat.user_status }} </div>
+                {% endif %}
+            {% endif %}
         </div>
-    {% for anime in anime_list %}
+        <form method="GET" class="mylist-filter">Filter by status:{{ anime_list.form.user_status }} &ensp; 
+            <button type="submit" class="buttonA">Filter</button>
+        </form>
+        <a href="{% url 'animemaster-mylist' %}"><button class="buttonA" style="float: unset">Reset</button></a>
+        <hr width="100%"/>
+    {% for anime in anime_list.qs %}
         <div class="mylist"> 
             <p style="display: inline;">
                 <a href="{% url 'details-media' anime.media_id %}"><i>{{anime.media.name}}</i></a>
@@ -33,7 +50,7 @@
                 {% elif anime.user_status == 'Already Watched' %}
                    <div id="user-status" style="color: green;"> {{ anime.user_status }} </div>
                 {% else %}
-                    {{ anime.user_status }}
+                    <div id="user-status" style="color: red;"> {{ anime.user_status }} </div>
                 {% endif %}
                 <a href="{% url 'unlist-media' anime.lid %}"><button class="buttonA" value="{{ anime.lid }}" style="float:right">Remove</button></a> 
                 <a href="{% url 'update-mylist' anime.lid %}" style="font-size: small;">Update</a>
@@ -47,6 +64,8 @@
             {% empty %}
         
                 <h3>{{ user.username }}, looks like your list is empty... (T.T)</h3>
+                Filter may have nothing to return. Reset filter or add stuff :D
+                <br>
                 <br>
                 <a href="{% url 'animemaster-anime' %}" class="btn btn-secondary">Go to Anime Catalog</a>
         </div>

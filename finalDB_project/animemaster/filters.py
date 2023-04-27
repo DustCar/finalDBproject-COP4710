@@ -1,7 +1,5 @@
 import django_filters
-from django import forms
 from .models import mediaAnime
-from users.models import List
 
 class listFilter(django_filters.FilterSet):
     GENRE_CHOICES = [
@@ -45,5 +43,5 @@ class listFilter(django_filters.FilterSet):
 
     class Meta:
         model = mediaAnime
-        fields = ['name', 'genre', 'type']
+        fields = ['name', 'genre', 'type', 'status']
 

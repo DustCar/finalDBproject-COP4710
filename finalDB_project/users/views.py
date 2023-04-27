@@ -6,6 +6,7 @@ from .forms import UserRegisterForm, userStatus
 from .models import User, List
 from datetime import datetime
 from animemaster.models import mediaAnime
+from .filters import mylistFilter
 
 
 def register(request):
@@ -49,9 +50,11 @@ def addToList(request, pk):
 @login_required
 def mylist(request):
     listdb = List.objects.select_related().filter(user=request.user.username).order_by('-dateadded', '-timeadded')
+    ml_filter = mylistFilter(request.GET, queryset=listdb)
     list_count = listdb.count()
+    stat = ml_filter.qs.first()
     
-    return render(request, 'animemaster/mylist.html', {'anime_list' : listdb, 'list_count' : list_count})
+    return render(request, 'animemaster/mylist.html', {'anime_list' : ml_filter, 'list_count' : list_count, 'stat': stat})
 
 def unlist(request, pk):
     list = List.objects.filter(lid=pk)
