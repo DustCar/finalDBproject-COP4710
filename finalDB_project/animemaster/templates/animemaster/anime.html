@@ -1,0 +1,87 @@
+{% extends "animemaster/index.html" %} <!-- extending the base template --> 
+{% load static %}  
+
+{% block content %}
+    <style>
+        body {
+        background-image: url('{% static "animemaster/photos/animephoto4.png" %}');
+        }
+    
+        footer {
+            background-color: white; 
+            padding: 20px 0px 10px;
+            color: black;
+        }
+    </style>
+    <div class="anime-list-bg">
+        {% if user.is_superuser %}
+            <a href="{% url 'add-anime' %}"><button class="buttonA">Add</button></a>
+        {% endif %}
+        <div class="anime-header">
+            <h2>Anime</h2>
+            <p>Add what anime you want onto your list! <br>
+            {% if l_equals %}
+            There are currently {{ filter_count }} available animes
+            {% elif filter_count == 0 %}
+            No results were found :(
+            {% else %}
+            {{ filter_count }} results have been found
+            {% endif %}
+            </p>
+            <button type="button" class="collapsible">Filter</button>
+            <div class="content-filter">
+                <form method="GET">
+                    <p>
+                        Filter By <br>
+                        Name: {{ anime_list.form.name }} &ensp; 
+                        Genre: {{ anime_list.form.genre }} &ensp; 
+                        Type: {{ anime_list.form.type }} &ensp;
+                        Status: {{ anime_list.form.status }} &ensp;
+                        <button type="submit" class="buttonC">Search</button>
+                    </p>
+                </form>
+                <a href="{% url 'animemaster-anime' %}"><button class="buttonC">Reset</button></a>
+            </div>
+            <hr width="100%">
+        </div>
+    {% for anime in anime_list.qs %}
+        <div class="anime-list"> 
+            <p>
+                {% if user.is_superuser %}
+                <a href="{% url 'remove-media' anime.id %}"><button class="buttonB">x</button></a>
+                {% endif %}
+                <a href="{% url 'details-media' anime.id %}"><i>{{anime.name}}</i></a> |
+                {{anime.genre}} |
+                {{anime.type}} |
+                {{anime.status}}
+                <a href="{% url 'add-media' anime.id %}"><button class="buttonA" value="{{ anime.id }}">Add to List</button></a>
+                <br>
+                <hr width="100%">
+            </p>
+        </div>
+        {% empty %}
+        Sorry, nothing to find here <a href="{% url 'animemaster-anime' %}"><button class="buttonC">Reset</button></a>
+    {% endfor %}
+    </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++)
+        {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling; 
+                if (content.style.display == "block")
+                {
+                    content.style.display = "none";
+                }
+                else 
+                {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+{% endblock content %}

@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -71,6 +73,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'finalDB_project.wsgi.application'
 
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -78,9 +84,9 @@ WSGI_APPLICATION = 'finalDB_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'animemaster',
-        'USER': 'giuliam',
-        'PASSWORD': 'GMar75975!',
+        'NAME': 'animemaster2',
+        'USER': 'dustc',
+        'PASSWORD': 'August__2902',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -123,10 +129,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'animemaster-home'
+
 LOGIN_URL = 'login'

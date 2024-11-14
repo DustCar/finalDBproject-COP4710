@@ -1,0 +1,22 @@
+{% extends "animemaster/index.html" %}
+{% block content %}
+    <h1>Add New Anime</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        Name: {{ form.name }}
+        <br><br>
+        Image: <br>{{ form.media_img }}
+        <br><br>
+        Genre(s): {{ form.genre }}
+        <br><br>
+        Type: {{ form.type }}
+        <br><br>
+        Number of episodes: {{ form.episodes }}
+        <br><br>
+        Synopsis: {{ form.synopsis }}
+        <br><br>
+
+        <input type="submit" value="Save Changes">
+    </form>
+{% endblock %}
